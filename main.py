@@ -84,7 +84,7 @@ async def process_positive_answer(message:Message):
         )
 
 # Отказ пользователя
-@dp.message(F.text.lower().in_['не', 'нет'])
+@dp.message(F.text.lower().in_(['не', 'нет']))
 async def process_negative_answer(message: Message):
     if not user['in_game']:
         await message.answer(
@@ -125,8 +125,8 @@ async def process_numbers_answer(message: Message):
                 f'было {user["secret_number"]}\n\nДавайте '
                 'сыграем еще?'
             )
-        else:
-            await message.answer('Мы еще не играем. Хотите сыграть?')
+    else:
+        await message.answer('Мы еще не играем. Хотите сыграть?')
 
 # Остальные ответы
 @dp.message()
